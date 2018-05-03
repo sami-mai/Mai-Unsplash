@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'smaiUnsplash',
-    # 'smaiUnsplash.app.SmaiUnsplashConfig',
+    'smaiUnsplash',
+    # 'smaiUnsplash.app.SmaiunsplashConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
