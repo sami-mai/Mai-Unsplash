@@ -1,7 +1,7 @@
 # Mai-Unsplash
 A personal gallery application that you display your photos for others to see.
 
-[This](https://mai-unsplash.herokuapp.com/) is a web application that is inspired by (https://unsplash.com/)
+[This](https://maisplash.herokuapp.com/) is a web application that is inspired by (https://unsplash.com/)
 
 ### Author
   - By Samirah Maison
@@ -16,7 +16,7 @@ A personal gallery application that you display your photos for others to see.
 ### Technologies Used
   *  Python3.6
   *  Django
-  
+
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
