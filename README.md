@@ -1,7 +1,7 @@
 # Mai-Unsplash
 A personal gallery application that you display your photos for others to see.
 
-[This](https://maisplash.herokuapp.com/) is a web application that is inspired by (https://unsplash.com/)
+[This](https://maisplash.herokuapp.com/) is a web application that is inspired by [Unsplash](https://unsplash.com/)
 
 ### Author
   - By Samirah Maison
