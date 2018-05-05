@@ -5,9 +5,6 @@ from django.db import models
 class Location(models.Model):
     location = models.CharField(max_length=120)
 
-    def __str__(self):
-        return self.location
-
     def save_location(self):
         self.save()
 
@@ -17,10 +14,21 @@ class Location(models.Model):
     class Meta:
         ordering = ['location']
 
+    '''
+    Class methods for Location Model
+    '''
     @classmethod
     def location_item(cls):
         location = cls.objects.all()
         return location
+
+    @classmethod
+    def update_location(cls, id, location):
+        image = cls.objects.filter(id=id).update(location=location)
+        return image
+
+    def __str__(self):
+        return self.location
 
 
 class Category(models.Model):
@@ -35,10 +43,18 @@ class Category(models.Model):
     class Meta:
         ordering = ['name']
 
+    '''
+    Class methods for Category Model
+    '''
     @classmethod
     def category_item(cls):
         category = cls.objects.all()
         return category
+
+    @classmethod
+    def update_category(cls, id, category):
+        image = cls.objects.filter(id=id).update(category=category)
+        return image
 
     def __str__(self):
         return self.name
@@ -78,12 +94,13 @@ class Image(models.Model):
 
     @classmethod
     def update_image(cls, id, image):
-        image = cls.objects.filter(id).update(image=image)
+        image = cls.objects.filter(id=id).update(image=image)
+        return image
 
     @classmethod
-    def search_image(cls, search_term):
-        category = cls.objects.filter(category__name__icontains=search_term)
-        return category
+    def search_by_category(cls, search_term):
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
 
     @classmethod
     def filter_by_location(cls, location):

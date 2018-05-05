@@ -1,66 +1,77 @@
-{%extends 'albums/cat-base.html'%}
-<!--  -->
-{% block content %}
+{%extends 'albums/al-base.html'%} {% block content %}
+<br>
+<br><br>
+<br>
+<br>
 <div class="container">
-  <div class="row">
-    <h1>{{category.name}}</h1>
-  </div>
-</div>
-{% for image in images %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-
-      <div class="row">
-        <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">
-            <img src="{{image.image.url}}" class="img-responsive" alt="Image">
-          </a>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">
+        {% if images%}
+        <h2>Found {{ images|length }} of searched term "<em>{{message}}</em>".</h2>
+        <!--  -->
+        {% else %}
+        <h2> Found 0 images for the search term "<em>{{message}}</em>".</h2> {% endif %}
       </div>
-
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        {% if images%}
+        <!--  -->
+        {% for image in images %}
+        <div class="col-xs-3 col-sm-3 col-md-3 mt-5">
+          <div class="row">
+            <a href="#" data-toggle="modal" data-target="#modal-{{image.id}}">
+            <img src="{{image.image.url}}" class="img-responsive" alt="{{image.image_name}}">
+            <div class="caption">
+              <p>{{image.image_name}}</p>
+            </div>
+          </a>
+          </div>
+        </div>
+      </div>
       <!-- Large modal -->
-      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal fade bs-example-modal-lg" id="modal-{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
-            <div class="row">
-              <h1 class="text-center">{{image.image_name}}</h1>
-            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{image.image_name}}</h4>
+                  </div>
+                  <div class="modal-body ">
+                    <div class="">
+                      <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="{{image.image.url}}" alt="{{image.image_name}}">
+                    </div>
 
-            <div class="row">
-              <p>{{image.image_description}}</p>
-            </div>
+                    <div class="row">
+                      <p>{{image.image_description}}</p>
+                    </div>
 
-            <div class="row">
-              <p>{{image.location}}</p>
-              <p>{{image.category}}</p>
+                    <div class="row">
+                      <p>{{image.location}}</p>
+                      <p>{{image.category}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
+      <!-- end of modal -->
+      {% endfor %}
+      <!--  -->
+      {% endif %}
     </div>
   </div>
 </div>
-
-{% endfor %} {% endblock %}
-<div class="container">
-
-  <div class="row">
-    {% if categories%}
-    <h2>Found {{ categories|length }} of searched term {{message}}.</h2> {% else %}
-    <h2> Found 0 categories for the search term {{message}}.</h2> {% endif %}
-
-  </div>
-
-  <div class="row">
-
-    {% if categories %} {% for category in categories %}
-    <div class="col-xs-4 col-sm-4 col-md-4 mt-5">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{category.image.url}}" class="img-responsive" alt="{{category.image_name}}">
-        <div class="card-body">
-          <a href="{% url 'image' category.id %}" class="card-link float-right">view more &rarr;</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %} {% endif %}
-  </div>
+{% endblock %}

@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" />
   <!--  -->
   {% if title %}
   <title>Mai Splash - {{title}}</title>
@@ -29,7 +29,7 @@
 </head>
 
 <body>
-  {% include "albums/cat-navbar.html" %}
+  {% include "albums/al-navbar.html" %}
   <!--  -->
   {% block content %}
   <h1 class='text-center'>She welcomes you</h1>
