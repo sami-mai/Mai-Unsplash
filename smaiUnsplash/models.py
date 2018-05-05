@@ -14,18 +14,34 @@ class Location(models.Model):
     def delete_location(self):
         self.delete()
 
+    class Meta:
+        ordering = ['location']
+
+    @classmethod
+    def location_item(cls):
+        location = cls.objects.all()
+        return location
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
 
     def save_category(self):
         self.save()
 
     def delete_category(self):
         self.delete()
+
+    class Meta:
+        ordering = ['name']
+
+    @classmethod
+    def category_item(cls):
+        category = cls.objects.all()
+        return category
+
+    def __str__(self):
+        return self.name
 
 
 class Image(models.Model):
@@ -52,8 +68,9 @@ class Image(models.Model):
     Class methods for Image Model
     '''
     @classmethod
-    def get_images(cls):
-        return cls.objects.all()
+    def image_item(cls):
+        image = cls.objects.all()
+        return image
 
     @classmethod
     def get_image_by_id(cls, id):
