@@ -1,8 +1,33 @@
+from django.http import Http404
 from django.shortcuts import render
-# from .models import Category, Image, Location
+from .models import Category, Image, Location
 
 
 # Create your views here.
 def home(request):
-    title = "Sami-Mai Unsplash"
-    return render(request, 'index.html', {"title": title})
+
+    images = Image.image_item()
+
+    return render(request, 'index.html', {"images": images})  # {"category": category})
+
+
+def image(request, image_id):
+    try:
+        image = Image.objects.get(id=image_id)
+    except DoesNotExist:
+        raise Http404()
+
+    return render(request, "albums/modal.html", {"image": image})
+
+
+def search_results(request):
+    if 'category' in request.GET and request.GET['category']:
+        search_term = request.GET.get('category')
+        searched_categories = Image.search_image(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'albums/search.html', {"message": message, "categories": searched_categories})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'albums/search.html', {"message": message})
