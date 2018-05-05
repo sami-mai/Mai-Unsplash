@@ -7,8 +7,8 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="panel-title">
-        {% if images%}
-        <h2>Found {{ images|length }} of searched term "<em>{{message}}</em>".</h2>
+        {% if categories%}
+        <h2>Found {{ categories|length }} of searched term "<em>{{message}}</em>".</h2>
         <!--  -->
         {% else %}
         <h2> Found 0 images for the search term "<em>{{message}}</em>".</h2> {% endif %}
@@ -16,15 +16,15 @@
     </div>
     <div class="panel-body">
       <div class="row">
-        {% if images%}
+        {% if categories%}
         <!--  -->
-        {% for image in images %}
+        {% for category in categories %}
         <div class="col-xs-3 col-sm-3 col-md-3 mt-5">
           <div class="row">
             <a href="#" data-toggle="modal" data-target="#modal-{{image.id}}">
-            <img src="{{image.image.url}}" class="img-responsive" alt="{{image.image_name}}">
+            <img src="{{category.image.url}}" class="img-responsive" alt="{{category.image_name}}">
             <div class="caption">
-              <p>{{image.image_name}}</p>
+              <p>{{category.image_name}}</p>
             </div>
           </a>
           </div>
@@ -40,20 +40,20 @@
                 <div class="col-md-7">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">{{image.image_name}}</h4>
+                    <h4 class="modal-title">{{category.image_name}}</h4>
                   </div>
                   <div class="modal-body ">
                     <div class="">
-                      <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="{{image.image.url}}" alt="{{image.image_name}}">
+                      <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="{{category.image.url}}" alt="{{category.image_name}}">
                     </div>
 
                     <div class="row">
-                      <p>{{image.image_description}}</p>
+                      <p>{{category.image_description}}</p>
                     </div>
 
                     <div class="row">
-                      <p>{{image.location}}</p>
-                      <p>{{image.category}}</p>
+                      <p>{{category.location}}</p>
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

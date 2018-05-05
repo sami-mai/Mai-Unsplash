@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
-from .models import Category, Image, Location
+from .models import Category, Image
 
 
 # Create your views here.
@@ -15,7 +15,7 @@ def search_results(request):
         searched_images = Image.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'albums/search.html', {"message": message, "images": searched_images})
+        return render(request, 'albums/search.html', {"message": message, "categories": searched_images})
 
     else:
         message = "...You haven't searched for any term"
