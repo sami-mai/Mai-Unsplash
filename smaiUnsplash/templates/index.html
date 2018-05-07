@@ -34,11 +34,9 @@
     <h1 class="">Explore!... <span class="text-muted"><small>It'll blow your mind.</small></span></h1>
     <br>
     <br>
-    <br>
-    <!--  -->
-    {% for image in images%}
-    <div class="col-xs-3 col-sm-3 col-md-3 mt-5">
-      <div class="row">
+    <div class="row">
+      {% for image in images%}
+      <div class="col-xs-3 col-sm-3 col-md-3">
         <a href="#" data-toggle="modal" data-target="#modal-{{image.id}}">
           <img class="featurette-image img-responsive center-block img-thumbnail" src="{{image.image.url}}" alt="{{image.image_name}}">
           <div class="caption">
@@ -46,51 +44,52 @@
           </div>
         </a>
       </div>
-    </div>
-    <!-- Large modal -->
-    <div class="modal fade bs-example-modal-lg" id="modal-{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-7">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">{{image.image_name}}</h4>
-                </div>
-                <div class="modal-body ">
-                  <div class="">
-                    <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="{{image.image.url}}" alt="{{image.image_name}}">
-                  </div>
 
-                  <div class="row">
-                    <p>{{image.image_description}}</p>
+      <!-- Large modal -->
+      <div class="modal fade bs-example-modal-lg" id="modal-{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{image.image_name}}</h4>
                   </div>
+                  <div class="modal-body ">
+                    <div class="">
+                      <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="{{image.image.url}}" alt="{{image.image_name}}">
+                    </div>
 
-                  <div class="row">
-                    <p>{{image.location}}</p>
-                    <p>{{image.category}}</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <div class="row">
+                      <p>{{image.image_description}}</p>
+                    </div>
+
+                    <div class="row">
+                      <p>{{image.location}}</p>
+                      <p>{{image.category}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
                   </div>
                 </div>
+                <div class="col-md-4"></div>
               </div>
-              <div class="col-md-4"></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- end of modal -->
-    {% empty %}
-    <div class="col-md-3">
-      <img class="featurette-image img-responsive center-block" src="static/images/lemonwater1.png" alt="Generic placeholder image">
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 mt-5">
-      <div class="row">
+      <!-- end of modal -->
+      {% empty %}
+      <!-- <div class="col-md-3">
+        <img class="featurette-image img-responsive center-block" src="static/images/lemonwater1.png" alt="Generic placeholder image">
+      </div> -->
+
+      <!-- <div class="row"> -->
+      <div class="col-xs-3 col-sm-3 col-md-3">
         <a href="#" data-toggle="modal" data-target="#modal2">
           <img class="featurette-image img-responsive center-block img-thumbnail" src="static/images/lemonwater1.png" alt="image">
           <div class="caption">
@@ -98,49 +97,48 @@
           </div>
         </a>
       </div>
-    </div>
-    <!-- Large modal -->
-    <div class="modal fade bs-example-modal-lg" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-7">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Lemon Water</h4>
-                </div>
-                <div class="modal-body ">
-                  <div class="">
-                    <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="static/images/lemonwater1.png" alt="image">
+      <!-- </div> -->
+      <!-- Large modal -->
+      <div class="modal fade bs-example-modal-lg" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Lemon Water</h4>
                   </div>
+                  <div class="modal-body ">
+                    <div class="">
+                      <img class="featurette-image img-responsive center-block img-rounded" style="height: 450px; width: 600px;" src="static/images/lemonwater1.png" alt="image">
+                    </div>
 
-                  <div class="row">
-                    <p> Quench your thirst with some cold Lemon Water</p>
-                  </div>
+                    <div class="row">
+                      <p> Quench your thirst with some cold Lemon Water</p>
+                    </div>
 
-                  <div class="row">
-                    <p>Accra, Ghana</p>
-                    <p>Food</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <div class="row">
+                      <p>Accra, Ghana</p>
+                      <p>Food</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
                   </div>
                 </div>
+                <div class="col-md-4"></div>
               </div>
-              <div class="col-md-4"></div>
             </div>
           </div>
         </div>
       </div>
+      <!-- end of modal -->
+      {% endfor%}
     </div>
-    <!-- end of modal -->
-
-
-    {% endfor%}
-    <hr>
+    <!-- <hr> -->
   </div>
 </div>
 <br>
