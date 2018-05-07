@@ -19,12 +19,12 @@ class Location(models.Model):
     '''
     @classmethod
     def location_item(cls):
-        location = cls.objects.all()
+        location = Location.objects.all()
         return location
 
     @classmethod
     def update_location(cls, id, location):
-        image = cls.objects.filter(id=id).update(location=location)
+        image = Location.objects.filter(id=id).update(location=location)
         return image
 
     def __str__(self):
@@ -48,12 +48,12 @@ class Category(models.Model):
     '''
     @classmethod
     def category_item(cls):
-        category = cls.objects.all()
+        category = Category.objects.all()
         return category
 
     @classmethod
     def update_category(cls, id, category):
-        image = cls.objects.filter(id=id).update(category=category)
+        image = Category.objects.filter(id=id).update(category=category)
         return image
 
     def __str__(self):
@@ -85,7 +85,7 @@ class Image(models.Model):
     '''
     @classmethod
     def image_item(cls):
-        image = cls.objects.all()
+        image = Image.objects.all()
         return image
 
     @classmethod
@@ -94,12 +94,12 @@ class Image(models.Model):
 
     @classmethod
     def update_image(cls, id, image):
-        image = cls.objects.filter(id=id).update(image=image)
+        image = Image.objects.filter(id=id).update(image=image)
         return image
 
     @classmethod
     def search_by_category(cls, search_term):
-        category = cls.objects.filter(category__name__icontains=search_term)
+        category = Image.objects.filter(category__name__icontains=search_term)
         return category
 
     @classmethod
